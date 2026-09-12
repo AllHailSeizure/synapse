@@ -9,8 +9,9 @@ description: >-
 # Worktrees
 
 Keep implementation off the user's active checkout when isolation helps.
-Detect existing isolation first. Prefer native harness worktree tools. Fall
-back to `git worktree` only when no native tool exists.
+Detect existing isolation first. Place new worktrees under
+`D:/worktrees/<repo-name>/`. Prefer native harness worktree tools when they
+can use that location; otherwise use `git worktree`.
 
 ## Step 0: Detect existing isolation
 
@@ -42,29 +43,34 @@ Consent prompt when preference is unknown:
 ### 1a. Native tool (preferred)
 
 If the harness exposes worktree creation (`EnterWorktree`, `/worktree`,
-`--worktree`, etc.), use it. Skipping native tools creates state the harness
-cannot manage.
+`--worktree`, etc.) **and** can place the tree under
+`D:/worktrees/<repo-name>/`, use it. Skipping a capable native tool creates
+state the harness cannot manage. If it would put the tree somewhere else,
+use the git fallback below.
 
 ### 1b. Git fallback
 
 Only when no native tool exists.
 
-**Directory priority:** explicit user preference → existing `.worktrees/` →
-existing `worktrees/` → default `.worktrees/`.
+Default location is **outside** the repo: `D:/worktrees/<repo-name>/<branch>`,
+where `<repo-name>` is the lowercase basename of the git toplevel (Synapse →
+`D:/worktrees/synapse`).
 
-**Must be gitignored** before creating:
-
-```bash
-git check-ignore -q .worktrees 2>/dev/null || git check-ignore -q worktrees 2>/dev/null
-```
-
-If not ignored: add to `.gitignore`, commit that change, then proceed.
+**Directory priority:** explicit user preference → `D:/worktrees/<repo-name>/`.
 
 ```bash
+REPO_NAME=$(basename "$(git rev-parse --show-toplevel)" | tr '[:upper:]' '[:lower:]')
+LOCATION="D:/worktrees/$REPO_NAME"
+mkdir -p "$LOCATION"
 path="$LOCATION/$BRANCH_NAME"
 git worktree add "$path" -b "$BRANCH_NAME"
 cd "$path"
 ```
+
+The default path is not inside the working tree, so it does not need to be
+gitignored. If the user prefers an in-repo directory, that path **must** be
+gitignored before creating (`git check-ignore -q <dir>`); if not ignored, add
+it to `.gitignore`, commit that change, then proceed.
 
 Sandbox/permission failure → report it, work in place instead.
 
@@ -86,8 +92,8 @@ Baseline: <pass | fail summary>
 | Situation | Action |
 |-----------|--------|
 | Already in linked worktree | Skip creation |
-| Native tool available | Use it |
-| No native tool | `git worktree add` under ignored dir |
-| Dir not ignored | Fix `.gitignore` first |
+| Native tool can use `D:/worktrees/<repo-name>/` | Use it |
+| No native tool | `git worktree add` under `D:/worktrees/<repo-name>/` |
+| In-repo dir not ignored | Fix `.gitignore` first |
 | Create blocked | Work in place |
 | Baseline fails | Report + ask |

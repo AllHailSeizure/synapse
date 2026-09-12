@@ -66,7 +66,7 @@ will be lost. Then:
 
 ```bash
 # from main repo root, outside the worktree
-git worktree remove "$WORKTREE_PATH"   # if you own it under .worktrees/ or worktrees/
+git worktree remove "$WORKTREE_PATH"   # if you own it under D:/worktrees/<repo-name>/
 git branch -D <feature-branch>
 ```
 
@@ -77,7 +77,7 @@ No typed magic word required beyond a clear yes to the confirmation.
 | Workspace | Cleanup |
 |-----------|---------|
 | Normal repo (`GIT_DIR == GIT_COMMON`) | Nothing |
-| Under `.worktrees/` or `worktrees/` after merge/discard | `git worktree remove` + prune |
+| Under `D:/worktrees/<repo-name>/` after merge/discard | `git worktree remove` + prune |
 | Harness-managed / other path | Leave it; use harness exit if any |
 | After PR opened | **Keep** worktree |
 
