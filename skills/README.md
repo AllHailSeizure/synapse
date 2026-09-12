@@ -20,6 +20,8 @@ Lean, directive skills. Noun-phrase names. Proportional judgment over ceremony.
 | `finishing-branches` | Verify → push → PR |
 | `goal-oriented-development` | User-directed issues; no fulfiller |
 | `autonomous-work-boundaries` | User intent vs agent execution |
+| `bug` | Explicit `/bug` or `$bug` → `commands/bug.mjs` (`@bug-bandaid`) |
+| `patch` | Explicit `/patch` or `$patch` → `commands/patch.mjs` (`@fastpatch`) |
 | `debug` | Explicit `/debug` or `$debug` → `debugging` (Codex; Cursor already has `/debug`) |
 
 `verification` reads repo-specific standard checks, scope mappings, environment
@@ -30,19 +32,19 @@ build, app, or CI path.
 `asset-churn-audit` and `worktree-cleanup` (the `/weedeat` skills) moved to
 their own plugin: [`weedeat`](https://github.com/AllHailSeizure/weedeat).
 
-## Commands
+## Slash
 
-| Command | Skill | Cursor | Codex |
-|---------|-------|--------|-------|
-| `/bug` | — (`commands/bug.mjs`) | yes | no (run the script) |
-| `/patch` | — (`commands/patch.mjs`) | yes | no (run the script) |
+| Slash | Skill | Cursor | Codex |
+|-------|-------|--------|-------|
+| `/bug` | `bug` | yes | `$bug` |
+| `/patch` | `patch` | yes | `$patch` |
 | `/debug` | `debugging` | built-in | `$debug` |
 
 ## Dropped / not ported
 
 | Dropped | Why |
 |---------|-----|
-| `bug` / `bug-capture` | Agent-chosen sticky-note capture; replaced by Cursor `/bug` and `commands/bug.mjs` |
+| `bug-capture` | Agent-chosen sticky-note capture; replaced by explicit `/bug` and `/patch` skills |
 | `systematic-debugging` | 5 agent types, skeptic gate, escalation cap, cap-out issues — replaced by `debugging` |
 | Old brainstorming checklist | 8-step interview, section gates, visual companion, and forced writing-plans — replaced by conversational `thinking` and explicit document capture through `writing-specs` |
 | requesting-code-review | Review when useful, not a suite gate |

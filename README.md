@@ -26,12 +26,12 @@ branch, worktree and branch sprawl — moved out to their own plugin:
 
 The Cursor plugin manifest is
 [`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json). It ships `skills/`,
-`/bug` and `/patch` (Cursor-only commands that run `commands/bug.mjs` and
+`/bug` and `/patch` (explicit skills that run `commands/bug.mjs` and
 `commands/patch.mjs`; Cursor already has `/debug`), and hooks from
 [`hooks/cursor.json`](hooks/cursor.json).
 
 Install from a local checkout or a marketplace that points at this repo. After
-install, start a new agent chat so skills, commands, and hooks load.
+install, start a new agent chat so skills and hooks load.
 
 ## Codex plugin installation
 
@@ -39,9 +39,9 @@ The Codex package manifest is [`.codex-plugin/plugin.json`](.codex-plugin/plugin
 and Codex root guidance is in [`AGENTS.md`](AGENTS.md). Registered Codex agents
 live under `.codex/agents/synapse/`. Hooks use
 [`hooks/hooks.json`](hooks/hooks.json). Codex custom prompts are gone.
-`$debug` is an explicit skill; Codex has no `/bug` or `/patch` command. Run
-`node commands/bug.mjs` or `node commands/patch.mjs` from this checkout to
-capture a sticky-note issue (`@bug-bandaid` vs `@fastpatch`).
+`$debug`, `$bug`, and `$patch` are explicit skills. `$bug` / `$patch` run
+`commands/bug.mjs` / `commands/patch.mjs` and capture a sticky-note issue
+(`@bug-bandaid` vs `@fastpatch`).
 
 Use the registered `spec-writer` for a named feature when you want a grounded
 `PENDING` spec plus terminal-interview questions. It stops after drafting; the
@@ -56,11 +56,11 @@ python C:\Users\nateb\.codex\skills\.system\plugin-creator\scripts\update_plugin
 codex plugin add synapse@personal
 ```
 
-Start a new Codex task after reinstalling so the updated skills, commands, and
+Start a new Codex task after reinstalling so the updated skills and
 agent registrations are loaded.
 
-The command index is in [`docs/COMMANDS.md`](docs/COMMANDS.md), leaving
-`commands/` focused on Cursor's `/bug` and `/patch` commands.
+The capture-skill index is in [`docs/COMMANDS.md`](docs/COMMANDS.md), leaving
+`commands/` for the `/bug` and `/patch` scripts.
 
 ## Session briefing and other hooks
 
@@ -121,12 +121,12 @@ Schema: [`docs/TEMPLATES/synapse/`](docs/TEMPLATES/synapse/). Worked example:
 ## Repository structure
 
 ```text
-skills/                         shared skills (including $debug)
+skills/                         shared skills (including $bug/$patch/$debug)
 hooks/                          briefing, scope, fan-out, verification gates
 .cursor-plugin/plugin.json      Cursor plugin manifest
 .codex-plugin/plugin.json       Codex plugin manifest
 .codex/agents/synapse/          Codex agent registrations
-commands/                       Cursor /bug and /patch plus capture scripts
+commands/                       capture scripts for /bug and /patch
 automations/                    Bandaid automations (special case)
 docs/                           templates and design history
 AGENTS.md                       Codex root guidance

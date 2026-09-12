@@ -1,5 +1,9 @@
 ---
-description: Capture a bug report without diagnosing or fixing it
+name: bug
+description: >-
+  Capture a bug report without diagnosing or fixing it. Use only when the
+  user invokes /bug or $bug. Do not file a sticky-note issue unprompted.
+disable-model-invocation: true
 ---
 
 # /bug
