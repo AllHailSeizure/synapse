@@ -1,16 +1,16 @@
-# Synapse commands
+# Synapse capture skills
 
 This index lives in `docs/` rather than `commands/` because Cursor publishes
-only the files listed in its plugin manifest.
+slash items from skills, not from leftover command markdown.
 
-Cursor loads only the files listed in `.cursor-plugin/plugin.json` (`/bug`,
-`/patch`). Cursor already ships `/debug`. Codex has no slash-command files;
-`$debug` is the explicit debugging skill. Sticky-note capture is Cursor `/bug`
-or `/patch`, or the matching `commands/*.mjs` scripts.
+`/bug` and `/patch` are skills with `disable-model-invocation: true`, so they
+only run when the user types them. Cursor already ships `/debug`. Codex
+invokes the same skills as `$bug`, `$patch`, and `$debug`. The capture
+scripts stay in `commands/*.mjs`.
 
-| Command | Purpose |
+| Slash | Purpose |
 | --- | --- |
-| [`/bug`](../commands/bug.md) | Run `commands/bug.mjs` with the user's arguments. Creates a GitHub issue and comments `@bug-bandaid` unless they opted out. |
-| [`/patch`](../commands/patch.md) | Same capture as `/bug`, but comments `@fastpatch`. |
+| [`/bug`](../skills/bug/SKILL.md) | Run `commands/bug.mjs` with the user's arguments. Creates a GitHub issue and comments `@bug-bandaid` unless they opted out. |
+| [`/patch`](../skills/patch/SKILL.md) | Same capture as `/bug`, but comments `@fastpatch`. |
 
 `/weedeat` moved to its own plugin: [`weedeat`](https://github.com/AllHailSeizure/weedeat).

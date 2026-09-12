@@ -1,7 +1,7 @@
 {
   "name": "synapse",
   "version": "0.3.0",
-  "description": "Personal workflow skills, commands, and hooks for deliberate Codex development.",
+  "description": "Personal workflow skills and hooks for deliberate Codex development.",
   "author": {
     "name": "AllHailSeizure",
     "email": "natebosma@gmail.com",

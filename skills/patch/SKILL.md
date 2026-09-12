@@ -1,5 +1,9 @@
 ---
-description: Capture a patch request without diagnosing or fixing it
+name: patch
+description: >-
+  Capture a patch request without diagnosing or fixing it. Use only when the
+  user invokes /patch or $patch. Do not file a sticky-note issue unprompted.
+disable-model-invocation: true
 ---
 
 # /patch
