@@ -26,7 +26,6 @@ Match the situation, then invoke the skill with the Skill tool.
 | Review feedback arrived (human or bot) | `code-review` |
 | Work needs isolation from the current checkout | `worktrees` |
 | Implementation is complete and verified | `finishing-branches` |
-| Create, pick, or work inside a GitHub issue | `goal-oriented-development` |
 | Delegated work, and you are unsure whether to pause | `autonomous-work-boundaries` |
 
 For a bounded drafting call, use the registered `spec-writer`; it writes the

@@ -31,8 +31,6 @@ The active suite lives in `skills/`:
 - `debugging` — hypotheses, instrumentation, one repro, fix, and PR.
 - `code-review` — verify review feedback before implementing it.
 - `finishing-branches` — verify, push, and open a PR; merging stays user-owned.
-- `goal-oriented-development` — user-directed GitHub issues; no automatic goal
-  selection and no goal-fulfiller dispatch.
 - `autonomous-work-boundaries` — user intent versus agent execution.
 
 Explicit command skills (invoke with `$name`; do not auto-fire): `debug`,
