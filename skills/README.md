@@ -18,7 +18,6 @@ Lean, directive skills. Noun-phrase names. Proportional judgment over ceremony.
 | `debugging` | Hypotheses → instrument → repro → fix → PR |
 | `code-review` | Receiving review feedback rigorously |
 | `finishing-branches` | Verify → push → PR |
-| `goal-oriented-development` | User-directed issues; no fulfiller |
 | `autonomous-work-boundaries` | User intent vs agent execution |
 | `bug` | Explicit `/bug` or `$bug` → `commands/bug.mjs` (`@bug-bandaid`) |
 | `patch` | Explicit `/patch` or `$patch` → `commands/patch.mjs` (`@fastpatch`) |
@@ -39,6 +38,13 @@ their own plugin: [`weedeat`](https://github.com/AllHailSeizure/weedeat).
 | `/bug` | `bug` | yes | `$bug` |
 | `/patch` | `patch` | yes | `$patch` |
 | `/debug` | `debugging` | built-in | `$debug` |
+
+## Archived
+
+Skills in `../archived-skills/` are preserved in the repository but excluded
+from both plugins, which load only `skills/`.
+
+- [`goal-oriented-development`](../archived-skills/goal-oriented-development/SKILL.md)
 
 ## Dropped / not ported
 
